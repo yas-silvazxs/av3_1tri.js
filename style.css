@@ -8,21 +8,22 @@
 }
 
 body {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Cor de fundo em degradê */
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 20px;
 }
 
 .container {
     background: #ffffff;
-    width: 90%;
-    max-width: 500px;
+    width: 100%;
+    max-width: 550px;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
@@ -30,116 +31,180 @@ h1 {
     text-align: center;
     margin-bottom: 30px;
     font-size: 24px;
-    background-color: #1a88e2;
+    background: linear-gradient(135deg, #1a88e2, #2a5298);
     border-radius: 50px;
-    padding: 0 20px;
+    padding: 18px 25px;
+    font-weight: 600;
 }
 
-/* --- ESTILO DAS ABAS --- */
+/* --- ESTILO DAS ABAS (CORRIGIDO PARA 3 ABAS) --- */
 .tabs-wrapper {
     position: relative;
+    margin-bottom: 20px;
 }
 
 .tab-list {
     list-style: none;
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 25px;
-    border-bottom: 2px solid #eee;
+    margin: 0;
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tab-list li {
+    flex: 1;
 }
 
 .tab-list li label {
-    padding: 10px 15px;
+    display: block;
+    padding: 16px 20px;
     cursor: pointer;
     font-weight: 600;
-    color: #888;
-    transition: all 0.3s ease; /* Transição de cor */
-    display: inline-block;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
 }
 
-/* Esconder os inputs radio */
+/* Esconder radios */
 input[type="radio"] {
     display: none;
 }
 
-/* Lógica das abas: Quando o radio for clicado, mude o estilo do label */
-#tab1:checked ~ .tab-list li:nth-child(1) label {
-    color: #1a88e2;
-    border-bottom: 3px solid #1a88e2;
+/* *** ATIVAÇÃO DAS 3 ABAS (ERA ISSO QUE FALTAVA!) *** */
+#tab1:checked ~ .tab-list li:nth-child(1) label,
+#tab2:checked ~ .tab-list li:nth-child(2) label,
+#tab3:checked ~ .tab-list li:nth-child(3) label {
+    color: #1a88e2 !important;
+    background: #ffffff !important;
+    box-shadow: 0 -4px 12px rgba(26, 136, 226, 0.2);
 }
 
-#tab2:checked ~ .tab-list li:nth-child(2) label {
-    color: #1a88e2;
-    border-bottom: 3px solid #1a88e2;
+/* *** SEÇÕES - CORRIGIDO *** */
+.content .section {
+    display: none !important;
+    animation: fadeIn 0.4s ease;
+    padding: 30px;
+    background: linear-gradient(145deg, #ffffff, #f8fcff);
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    border: 1px solid #e8f4ff;
+    min-height: 350px;
 }
 
-/* Esconder seções por padrão */
-.section-tab1, .section-tab2 {
-    display: none;
-    animation: fadeIn 0.5s ease; /* Transição de entrada */
+/* *** MOSTRAR AS 3 ABAS (ERA ISSO QUE FALTAVA!) *** */
+#tab1:checked ~ .content .section-tab1,
+#tab2:checked ~ .content .section-tab2,
+#tab3:checked ~ .content .section-tab3 {
+    display: block !important;
 }
-
-/* Mostrar a seção correspondente ao radio selecionado */
-#tab1:checked ~ .content .section-tab1 { display: block; }
-#tab2:checked ~ .content .section-tab2 { display: block; }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* *** LAYOUT ROW PARA ENDEREÇO *** */
+.row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
+.flex-3 { flex: 3; }
+
+@media (max-width: 600px) {
+    .row {
+        flex-direction: column;
+        gap: 0;
+    }
 }
 
 /* --- INPUTS --- */
 .input-group {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 label {
     display: block;
     font-size: 12px;
     font-weight: 600;
-    color: #555;
+    color: #444;
     margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 input {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #f0f0f0;
-    border-radius: 8px;
-    font-size: 14px;
-    transition: border-color 0.3s ease; /* Transição na borda */
+    padding: 14px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    background: #fff;
 }
 
 input:focus {
     outline: none;
     border-color: #1a88e2;
+    box-shadow: 0 0 0 4px rgba(26, 136, 226, 0.1);
+    transform: translateY(-1px);
 }
 
-/* --- BOTÃO ENVIAR CENTRALIZADO --- */
+/* --- BOTÃO --- */
 .form-footer {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 2px solid #e9ecef;
 }
 
 .btn-submit {
-    background: #1a88e2;
+    background: linear-gradient(135deg, #1a88e2, #2a5298);
     color: white;
-    padding: 15px 40px;
+    padding: 16px 45px;
     border: none;
     border-radius: 50px;
     font-weight: 600;
+    font-size: 16px;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(26, 136, 226, 0.4);
-    transition: all 0.3s ease; /* Transição de escala e sombra */
+    box-shadow: 0 6px 20px rgba(26, 136, 226, 0.3);
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
 }
 
 .btn-submit:hover {
-    background: #1572c2;
-    transform: translateY(-3px); /* Efeito de levante */
-    box-shadow: 0 6px 20px rgba(26, 136, 226, 0.6);
+    background: linear-gradient(135deg, #1572c2, #1e3c72);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(26, 136, 226, 0.4);
 }
 
 .btn-submit:active {
-    transform: scale(0.95); /* Efeito de clique */
+    transform: scale(0.97);
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    .container {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+    
+    .tab-list li label {
+        padding: 14px 12px;
+        font-size: 13px;
+    }
+    
+    h1 {
+        font-size: 20px;
+        padding: 15px 20px;
+    }
 }
