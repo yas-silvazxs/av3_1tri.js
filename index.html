@@ -13,14 +13,17 @@
         <div class="tabs-wrapper">
             <input type="radio" name="tab-control" id="tab1" checked>
             <input type="radio" name="tab-control" id="tab2">
+            <input type="radio" name="tab-control" id="tab3">
 
             <ul class="tab-list">
-                <li title="Dados"><label for="tab1"><span>Dados Pessoais</span></label></li>
-                <li title="Contato"><label for="tab2"><span>Contato</span></label></li>
+                <li><label for="tab1"><span>Pessoal</span></label></li>
+                <li><label for="tab2"><span>Contato</span></label></li>
+                <li><label for="tab3"><span>Endereço</span></label></li>
             </ul>
 
             <div class="content">
-                <section class="section-tab1">
+                <!-- ABA 1: INFORMAÇÕES PESSOAIS -->
+                <section class="section section-tab1">
                     <div class="input-group">
                         <label for="nome">NOME COMPLETO</label>
                         <input type="text" id="nome" placeholder="Ex: Maria Silva" required>
@@ -35,7 +38,8 @@
                     </div>
                 </section>
 
-                <section class="section-tab2">
+                <!-- ABA 2: CONTATO -->
+                <section class="section section-tab2">
                     <div class="input-group">
                         <label for="email_val">EMAIL</label>
                         <input type="email" id="email_val" placeholder="email@exemplo.com" required>
@@ -44,12 +48,45 @@
                         <label for="cel_val">CELULAR</label>
                         <input type="tel" id="cel_val" placeholder="(99) 99999-9999" required>
                     </div>
+                </section>
 
-                    <div class="form-footer">
-                        <button type="submit" class="btn-submit">Enviar Cadastro</button>
+                <!-- ABA 3: ENDEREÇO -->
+                <section class="section section-tab3">
+                    <div class="input-group">
+                        <label for="cep_val">CEP</label>
+                        <input type="text" id="cep_val" placeholder="00000-000">
+                    </div>
+                    <div class="row">
+                        <div class="input-group flex-3">
+                            <label for="rua_val">RUA</label>
+                            <input type="text" id="rua_val" placeholder="Nome da rua">
+                        </div>
+                        <div class="input-group flex-1">
+                            <label for="num_val">Nº</label>
+                            <input type="text" id="num_val" placeholder="123">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="bairro_val">BAIRRO</label>
+                        <input type="text" id="bairro_val" placeholder="Bairro">
+                    </div>
+                    <div class="row">
+                        <div class="input-group flex-2">
+                            <label for="cidade_val">CIDADE</label>
+                            <input type="text" id="cidade_val" placeholder="Cidade">
+                        </div>
+                        <div class="input-group flex-1">
+                            <label for="uf_val">ESTADO (UF)</label>
+                            <input type="text" id="uf_val" placeholder="SP">
+                        </div>
                     </div>
                 </section>
             </div>
+        </div>
+
+        <!-- BOTÃO FIXO NO FINAL (visível em todas as abas) -->
+        <div class="form-footer">
+            <button type="submit" class="btn-submit">Enviar Cadastro</button>
         </div>
     </main>
 </body>
