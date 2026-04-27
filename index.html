@@ -20,9 +20,26 @@
                 <li><label for="tab2"><span>Contato</span></label></li>
                 <li><label for="tab3"><span>Endereço</span></label></li>
             </ul>
+                 
+                <script>
+                    function pesquisarCEP(){
+                        const cep = document.getElementById("ceṕ").value
+                        const link = 'https://viacep.com.br/ws' + cep + '/json/?callback=preencherEndereco'
+                        var script = document.createElement("script")
+                        script.src = link
+                        document.body.appendChild(script)
+
+                    }
+                    function preencherEndereco(conteudo){
+                    
+                        resposta.textContent = JSON.stringify(conteudo)
+
+                    }    
+
+                </script>
 
             <div class="content">
-                <!-- ABA 1: INFORMAÇÕES PESSOAIS -->
+             
                 <section class="section section-tab1">
                     <div class="input-group">
                         <label for="nome">NOME COMPLETO</label>
@@ -38,7 +55,7 @@
                     </div>
                 </section>
 
-                <!-- ABA 2: CONTATO -->
+        
                 <section class="section section-tab2">
                     <div class="input-group">
                         <label for="email_val">EMAIL</label>
@@ -50,11 +67,12 @@
                     </div>
                 </section>
 
-                <!-- ABA 3: ENDEREÇO -->
+         
                 <section class="section section-tab3">
                     <div class="input-group">
-                        <label for="cep_val">CEP</label>
-                        <input type="text" id="cep_val" placeholder="00000-000">
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" placeholder="00000-000" onblur="pesquisarCEP(this.value)" required>
+                        <p id="resposta"></p>
                     </div>
                     <div class="row">
                         <div class="input-group flex-3">
@@ -84,7 +102,6 @@
             </div>
         </div>
 
-        <!-- BOTÃO FIXO NO FINAL (visível em todas as abas) -->
         <div class="form-footer">
             <button type="submit" class="btn-submit">Enviar Cadastro</button>
         </div>
